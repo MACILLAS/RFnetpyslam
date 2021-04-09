@@ -123,7 +123,7 @@ if __name__ == "__main__":
                     cv2.putText(traj_img, text, (20, 40), cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 255), 1, 8)
                     # show 		
                     #cv2.imshow('Trajectory', traj_img)
-                    cv2_imshow('Trajectory', traj_img) #for colab
+                    cv2_imshow('traj_img) #for colab
 
                 if is_draw_3d:           # draw 3d trajectory 
                     if kUsePangolin:
@@ -152,7 +152,7 @@ if __name__ == "__main__":
 
             # draw camera image 
             #cv2.imshow('Camera', vo.draw_img)
-            cv2_imshow('Camera', vo.draw_img) #for colab
+            cv2_imshow(vo.draw_img) #for colab
 
         # press 'q' to exit!
         if cv2.waitKey(1) & 0xFF == ord('q'):
