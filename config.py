@@ -47,8 +47,8 @@ class Config(object):
         self.cam_settings = None
         self.dataset_settings = None
         self.dataset_type = None
-        #self.current_path = os.getcwd()
-        #print('current path: ', self.current_path)
+        self.current_path = os.getcwd()
+        print('current path: ', self.current_path)
 
         self.config_parser.read(__location__ + '/' + self.config_file)
         self.set_core_lib_paths()
@@ -91,7 +91,7 @@ class Config(object):
 
         self.dataset_path = self.dataset_settings['base_path'];
         self.dataset_settings['base_path'] = os.path.join( __location__, self.dataset_path)
-        #print('dataset_settings: ', self.dataset_settings)
+        print('dataset_settings: ', self.dataset_settings)
 
     # get camera settings
     def get_cam_settings(self):

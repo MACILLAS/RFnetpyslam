@@ -38,7 +38,8 @@ from pyramid import Pyramid, PyramidType
 from feature_root_sift import RootSIFTFeature2D
 from feature_shitomasi import ShiTomasiDetector
     
-# import and check 
+# import and check
+RfnetFeature2D = import_from('feature_rfnet', 'rfnet')
 SuperPointFeature2D = import_from('feature_superpoint', 'SuperPointFeature2D')         
 TfeatFeature2D = import_from('feature_tfeat', 'TfeatFeature2D')     
 Orbslam2Feature2D = import_from('feature_orbslam2', 'Orbslam2Feature2D')  
@@ -454,7 +455,12 @@ class FeatureManager(object):
             self._feature_detector = LfNetFeature2D(num_features=self.num_features)
             #self.keypoint_filter_type = KeyPointFilterTypes.NONE
             #    
-            #   
+            #
+        elif self.detector_type == FeatureDetectorTypes.RFNET:
+            self.need_color_image = True
+            self._feature_detector = RfnetFeature2D()
+            #
+            #
         elif self.detector_type == FeatureDetectorTypes.R2D2:  
             self.need_color_image = True        
             #self.num_levels = - # internally recomputed               
@@ -610,7 +616,13 @@ class FeatureManager(object):
                 #self._feature_descriptor = L2NetKerasFeature2D()    # keras-tf version 
                 self._feature_descriptor = L2NetFeature2D()                        
                 #
-                #                   
+                #
+            elif self.descriptor_type == FeatureDescriptorTypes.RFNET:
+                if self.detector_type != FeatureDetectorTypes.RFNET:
+                    raise ValueError("You cannot use RFNet descriptor without RFNET detector!\nPlease, select RFNET as both descriptor and detector!")
+                self._feature_descriptor = RfnetFeature2D()
+                #
+                #
             elif self.descriptor_type == FeatureDescriptorTypes.LOGPOLAR:              
                 self._feature_descriptor = LogpolarFeature2D()                        
                 #
@@ -684,7 +696,8 @@ class FeatureManager(object):
         
         # get and set norm type 
         try: 
-            self.norm_type = FeatureInfo.norm_type[self.descriptor_type]
+            #self.norm_type = FeatureInfo.norm_type[self.descriptor_type]
+            self.norm_type = cv2.NORM_L2 #seriously fuk this code
         except:
             Printer.red('You did not set the norm type for: ', self.descriptor_type.name)              
             raise ValueError("Unmanaged norm type for feature descriptor %s" % self.descriptor_type.name)     
@@ -699,7 +712,8 @@ class FeatureManager(object):
             
          # get and set reference max descriptor distance      
         try: 
-            Parameters.kMaxDescriptorDistance = FeatureInfo.max_descriptor_distance[self.descriptor_type]
+            #Parameters.kMaxDescriptorDistance = FeatureInfo.max_descriptor_distance[self.descriptor_type]
+            Parameters.kMaxDescriptorDistance = 5 #RFNET workaround because FeatureInfo does not seem to work 5
         except: 
             Printer.red('You did not set the reference max descriptor distance for: ', self.descriptor_type.name)                                                         
             raise ValueError("Unmanaged max descriptor distance for feature descriptor %s" % self.descriptor_type.name)                

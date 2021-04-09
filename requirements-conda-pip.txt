@@ -3,7 +3,8 @@
 #imageio==2.8.0
 #kiwisolver==1.1.0
 #Markdown==3.2.1
-matplotlib==3.2.1
+#matplotlib==3.2.1
+matplotlib
 #networkx==2.4
 opencv-contrib-python #==3.4.2.16
 #opencv-python==4.2.0.32
@@ -14,9 +15,11 @@ pygame==1.9.6
 PyOpenGL==3.1.5
 #pyparsing==2.4.6
 python-dateutil==2.8.1
-PyWavelets==1.1.1
+#PyWavelets==1.1.1
+PyWavelets
 #PyYAML==5.3.1
-scikit-image==0.16.2
+#scikit-image==0.16.2
+scikit-image
 #six==1.14.0
 tb-nightly==1.14.0a20190603
 torch==1.4.0

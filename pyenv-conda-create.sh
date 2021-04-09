@@ -8,9 +8,9 @@ if [[ -z "$ENV_NAME" ]]; then
     ENV_NAME='pyslam'
 fi
 
-#conda create --name $ENV_NAME --file requirements-conda.txt -c conda-forge
+conda create --name $ENV_NAME --file requirements-conda.txt -c conda-forge
 # or (easier)
-conda env create -f requirements-conda.yml
+#conda env create -f requirements-conda.yml
 
 # activate created env 
 . pyenv-conda-activate.sh 

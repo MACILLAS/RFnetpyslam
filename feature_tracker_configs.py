@@ -186,6 +186,14 @@ class FeatureTrackerConfigs(object):
                       match_ratio_test = kRatioTest,                               
                       tracker_type = kTrackerType)
 
+    RFNET = dict(num_features=kNumFeatures,
+                 num_levels = 1,
+                 scale_factor = 1.2,
+                 detector_type = FeatureDetectorTypes.RFNET,
+                 descriptor_type = FeatureDetectorTypes.RFNET,
+                 match_ratio_test = kRatioTest,
+                 tracker_type = kTrackerType)
+
     CONTEXTDESC = dict(num_features=kNumFeatures,                   
                        num_levels = 1,                                  
                        scale_factor = 1.2,                              
@@ -251,4 +259,5 @@ class FeatureTrackerConfigs(object):
                 detector_type = FeatureDetectorTypes.ORB2, 
                 descriptor_type = FeatureDescriptorTypes.L2NET, 
                 match_ratio_test = kRatioTest,                        
-                tracker_type = kTrackerType) 
+                tracker_type = kTrackerType)
+
