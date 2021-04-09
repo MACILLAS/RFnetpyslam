@@ -115,8 +115,8 @@ class rfnet:
         device = torch.device("cuda")
         model = model.to(device)
         #resume = args.resume
-        resume = "/home/cviss3/PycharmProjects/gensynth_dev_env/pyslam/thirdparty/rfnet/runs/10_24_09_25/model/e121_NN_0.480_NNT_0.655_NNDR_0.813_MeanMS_0.649.pth.tar"
-        #resume = "./rfnet/runs/10_24_09_25/model/e121_NN_0.480_NNT_0.655_NNDR_0.813_MeanMS_0.649.pth.tar"
+        #resume = "/home/cviss3/PycharmProjects/gensynth_dev_env/pyslam/thirdparty/rfnet/runs/10_24_09_25/model/e121_NN_0.480_NNT_0.655_NNDR_0.813_MeanMS_0.649.pth.tar"
+        resume = "/content/RFnetpyslam/thirdparty/rfnet/runs/10_24_09_25/model/e121_NN_0.480_NNT_0.655_NNDR_0.813_MeanMS_0.649.pth.tar"
 
         print('==> Loading pre-trained network.')
         checkpoint = torch.load(resume)
