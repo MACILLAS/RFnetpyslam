@@ -123,7 +123,7 @@ if __name__ == "__main__":
                     cv2.putText(traj_img, text, (20, 40), cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 255), 1, 8)
                     # show 		
                     #cv2.imshow('Trajectory', traj_img)
-                    cv2_imshow('traj_img) #for colab
+                    cv2_imshow(traj_img) #for colab
 
                 if is_draw_3d:           # draw 3d trajectory 
                     if kUsePangolin:
